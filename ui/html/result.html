@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт для лучшей читаемости */
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Светлый фон */
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h3 {
+            color: #444;
+            margin: 15px 0;
+        }
+
+        h4 {
+            color: #900;
+            margin: 10px 0;
+        }
+
+        .true, .false {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .true {
+            background-color: #d4edda; /* Цвет фона для блока "Дұрыс" */
+        }
+
+        .false {
+            background-color: #f8d7da; /* Цвет фона для блока "Қате" */
+        }
+
+        .Answer {
+            margin-left: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Цвет фона для кнопки опасных действий */
+            border: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Цвет фона при наведении на кнопку опасных действий */
+        }
+
+    </style>
+</head>
+<body>
+<h1>Resultat {{.Grades}}</h1>
+{{range .Result}}
+<h3>{{.Number}}. {{.Query}}</h3>
+{{if .Res}}
+<div class="true">
+    <h4>Дұрыс</h4>
+    <div class="Answer">
+        <h4>{{.Answer}}</h4>
+    </div>
+</div>
+{{else}}
+<div class="false">
+    <h4>Қате</h4>
+    <div class="Answer">
+        <h4>{{.Answer}}</h4>
+    </div>
+</div>
+{{end}}
+{{end}}
+<h2>{{.Lenght}} - сұрақтан {{.ResLen}} дұрыс</h2>
+<form>
+    <button id="show-error-button" class="btn btn-danger"><a href="/api/home">Үйге қайту</a></button>
+</form>
+</body>
+</html>

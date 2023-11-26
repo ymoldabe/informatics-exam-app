@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Стили для заголовка h1 */
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            /* Анимация для заголовка */
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        /* Стили для формы */
+        #quizForm {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            /* Анимация для формы */
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        /* Стили для блока с вопросами */
+        .questions {
+            margin-bottom: 20px;
+        }
+
+        /* Стили для заголовка вопроса h3 */
+        .questions h3 {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Стили для блока с вариантами ответов */
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Стили для радио кнопок */
+        /*.options input[type="radio"] {*/
+        /*    margin-bottom: 5px;*/
+        /*}*/
+
+        /* Скрытие радио кнопок */
+        .options input[type="radio"] {
+            /*display: none;*/
+        }
+
+        /* Стили для лейблов (контейнеров) */
+        .options label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            cursor: pointer; /* Добавим курсор указывающий на то, что это кликабельный элемент */
+        }
+
+        .options label::before {
+            content: ''; /* Добавим пустой контент для создания фона кнопки */
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%; /* Для создания круглой формы */
+            border: 2px solid #007bff; /* Цвет обводки кнопки */
+            margin-right: 10px; /* Расстояние между кнопкой и текстом */
+        }
+
+        /* Стили для изменения внешнего вида кнопки при выборе */
+        .options input[type="radio"]:checked + label::before {
+            background-color: #007bff; /* Изменяем цвет фона кнопки при выборе */
+        }
+
+        /* Стили для текста ответов */
+        .options label span {
+            /* Добавим стили обычного текста */
+            font-size: 1rem;
+            color: #333;
+            /* Дополнительные стили по вашему выбору */
+        }
+
+
+
+
+        /* Стили для кнопки submit */
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            /* Анимация для кнопки submit */
+            animation: pulse 1s infinite alternate;
+        }
+
+        /* Анимации */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>{{.Grades}} - сынып тесттері</h1>
+    <form id="quizForm" method="POST">
+        {{range $questionIndex, $question := .Questions}}
+            <div class="questions">
+                <h3>{{$question.Number}}. {{$question.Query}}</h3>
+                <div class="options">
+                    {{ range  $key, $item :=  $question.Options }}
+                        <input type="radio" name="answers-{{$questionIndex}}" value="{{$key}}" required>{{$item}}</input>
+                    {{end}}
+                </div>
+            </div>
+        {{end}}
+        <input type="submit" value="Тексеру">
+    </form>
+</body>
+</html>

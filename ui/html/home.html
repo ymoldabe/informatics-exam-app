@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Подключение Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Дополнительные стили */
+    body {
+      padding-top: 50px; /* Для примера, чтобы учесть высоту навбара */
+    }
+
+    .grades {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .grades a {
+      color: #0366d6;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .grades a:hover {
+      color: #0552a5;
+    }
+  </style>
+</head>
+<body>
+<h1 class="text-center mt-3">Өз сыныбңды таңда</h1>
+
+<div class="container">
+  {{range .Grades}}
+  <div class="grades my-3">
+    <a href="testing/{{.}}" class="d-block">{{.}} - сынып</a>
+  </div>
+  {{end}}
+</div>
+
+<!-- Подключение Bootstrap JS и jQuery (для анимаций) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
