@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{.Grades}} - сынып</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Шрифт для лучшей читаемости */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9; /* Светлый фон */
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
         }
 
         h1 {
@@ -35,16 +40,17 @@
         }
 
         .true {
-            background-color: #d4edda; /* Цвет фона для блока "Дұрыс" */
+            background-color: #d4edda;
         }
 
         .false {
-            background-color: #f8d7da; /* Цвет фона для блока "Қате" */
+            background-color: #f8d7da;
         }
 
         .Answer {
-            margin-left: 20px;
+            margin-left: 0px;
         }
+
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -55,37 +61,35 @@
         }
 
         .btn-danger {
-            background-color: #dc3545; /* Цвет фона для кнопки опасных действий */
+            background-color: #dc3545;
             border: none;
         }
 
         .btn-danger:hover {
-            background-color: #c82333; /* Цвет фона при наведении на кнопку опасных действий */
+            background-color: #c82333;
         }
-
     </style>
 </head>
 <body>
-<h1>Resultat {{.Grades}}</h1>
+<h1>{{.Lenght}} - сұрақтан {{.ResLen}} дұрыс</h1>
 {{range .Result}}
 <h3>{{.Number}}. {{.Query}}</h3>
 {{if .Res}}
 <div class="true">
-    <h4>Дұрыс</h4>
+    <h4>Дұрыс "+"</h4>
     <div class="Answer">
-        <h4>{{.Answer}}</h4>
+        <h4>Дұрыс жауап - "{{.Answer}}"</h4>
     </div>
 </div>
 {{else}}
 <div class="false">
-    <h4>Қате</h4>
+    <h4>Қате "x"</h4>
     <div class="Answer">
-        <h4>{{.Answer}}</h4>
+        <h4>Дұрыс жауап - "{{.Answer}}"</h4>
     </div>
 </div>
 {{end}}
 {{end}}
-<h2>{{.Lenght}} - сұрақтан {{.ResLen}} дұрыс</h2>
 <form>
     <button id="show-error-button" class="btn btn-danger"><a href="/api/home">Үйге қайту</a></button>
 </form>

@@ -27,7 +27,6 @@ func GetTestFiles(filePaths []string) ([]models.Data, error) {
 			return nil, err
 		}
 		resData = append(resData, questions)
-		fmt.Println(resData)
 	}
 	return resData, nil
 

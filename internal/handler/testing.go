@@ -2,7 +2,6 @@ package handler
 
 import (
 	"Zhantasov/internal/models"
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -47,7 +46,6 @@ func (h *HandlerType) TestingResult(c *gin.Context) {
 	for key, value := range questions {
 		res := models.Result{}
 		name := "answers-" + strconv.Itoa(key)
-		fmt.Println("answers-0", name)
 		answer := c.PostForm(name)
 		ans, err := strconv.Atoi(value.Answer)
 		if err != nil {

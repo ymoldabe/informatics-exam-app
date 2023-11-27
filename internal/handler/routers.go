@@ -7,6 +7,8 @@ import (
 func (h *HandlerType) InitRouters() *gin.Engine {
 
 	router := gin.New()
+	router.Use(gin.Recovery())         // to recover gin automatically
+	router.Use(jsonLoggerMiddleware()) // we'll define it later
 	router.LoadHTMLGlob("./ui/html/*.html")
 	router.Static("/static", "./ui/static/")
 

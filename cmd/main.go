@@ -15,6 +15,10 @@ import (
 var filePaths = []string{
 
 	"./exam_data/5-сынып.json",
+	"./exam_data/6-сынып.json",
+	"./exam_data/7-сынып.json",
+	"./exam_data/8-сынып.json",
+	"./exam_data/9-сынып.json",
 }
 
 func main() {
